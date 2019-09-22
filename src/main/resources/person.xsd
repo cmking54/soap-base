@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/person"
+	xmlns:tns="http://www.example.org/person"
+	elementFormDefault="qualified">
+
+	<!-- Define the Person Type -->
+	<complexType name="Person">
+		<sequence>
+			<element name="id" type="int" />
+			<element name="firstName" type="string" />
+			<element name="lastName" type="string" />
+			<element name="dob" type="date" />
+		</sequence>
+	</complexType>
+
+	<!-- Create Person - Create Operation -->
+	<element name="CreatePersonRequest">
+		<complexType>
+			<sequence>
+				<element name="firstName" type="string" nillable="false" />
+				<element name="lastName" type="string" nillable="true" />
+				<element name="dob" type="date" nillable="true" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="CreatePersonResponse">
+		<complexType>
+			<sequence>
+				<element name="Person" type="tns:Person" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<!-- Get Person - Read Operation] -->
+	<element name="GetPersonRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="int" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="GetPersonResponse">
+		<complexType>
+			<sequence>
+				<element name="Person" type="tns:Person" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<!-- Update Person - Update Operation -->
+	<element name="UpdatePersonRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="int" />
+				<element name="firstName" type="string" nillable="true" />
+				<element name="lastName" type="string" nillable="true" />
+				<element name="dob" type="date" nillable="true" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="UpdatePersonResponse">
+		<complexType>
+			<sequence>
+				<element name="Person" type="tns:Person" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<!-- Delete Person - Delete Operation -->
+	<element name="DeletePersonRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="int" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="DeletePersonResponse">
+		<complexType>
+			<sequence>
+				<element name="Person" type="tns:Person" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>
